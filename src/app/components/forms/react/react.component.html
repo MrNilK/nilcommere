@@ -1,0 +1,26 @@
+<form [formGroup]="formObj">
+    <b>
+        <p align="center"> Reactive Form</p>
+    </b>
+    <div class="input-field col s12">
+        <label> uname</label>
+        <input type="text" formControlName="uNameObj" minLength=6 />
+    </div>
+
+    <div *ngIf="formObj.get('uNameObj').touched && formObj.get('uNameObj').invalid" style="color:red">
+        Error...!
+        <div *ngIf="formObj.get('uNameObj').errors.required">req</div>
+        <div *ngIf="formObj.get('uNameObj').errors.minLength">min 3</div>
+    </div>
+
+    <div class="input-field col s12 ">
+        <label> Password</label>
+        <input type="password" formControlName="passObj" class="validate" minLength="6" />
+    </div>
+    <div *ngIf="formObj.get('passObj').touched && formObj.get('passObj').invalid" style="color:red">
+        Error...!
+        <div *ngIf="formObj.get('passObj').errors.required">required</div>
+        <div *ngIf="formObj.get('passObj').errors.minLength">password should be minimum 6 characters</div>
+    </div>
+
+</form>

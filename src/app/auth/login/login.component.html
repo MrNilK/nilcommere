@@ -1,0 +1,18 @@
+<b>
+
+    <b>
+        <form class="box">
+            <div class="input-field" id="nil">
+
+                <input type="text" placeholder="Username" #username required />
+            </div>
+
+            <div class="input-field" id="nil">
+
+                <input type="password" placeholder="Password" #password required />
+            </div>
+
+            <h6 style="color: red;">{{errMsg}}</h6>
+            <input type="submit" value='Login' (click)='login(username.value , password.value)'>
+
+        </form>

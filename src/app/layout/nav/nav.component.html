@@ -1,0 +1,49 @@
+<!--dropdown section-->
+<ul id="dropdown1" class="dropdown-content">
+  <li><a routerLink="temp">Temp</a></li>
+  <li><a routerLink="react">React</a></li>
+</ul>
+<ul id="dropdown2" class="dropdown-content">
+  <li><a routerLink="login">login</a></li>
+  <li (click)='logout()'><a routerLink="home">logOut</a></li>
+</ul>
+<!--/dropdown section-->
+
+<nav class="indigo" role="navigation">
+  <div class="nav">
+    <a id="logo-container" routerLink="home" class="brand-logo"><img src='./../../../assets//img/shopping3.png'
+        width=70></a>
+
+    <ul id="navlist" class="right hide-on-med-and-down light">
+      <li><a routerLink="home">Home</a></li>
+      <li><a routerLink="mobiles">Mobile</a></li>
+      <li><a routerLink="books">Books</a></li>
+      <li><a routerLink="bikes">Bikes</a></li>
+
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Forms<i
+            class="material-icons right">arrow_drop_down</i></a></li>
+
+      <li (click)='loginFirst()'><a routerLink="dash">dashboard</a></li>
+
+      <li><a class="dropdown-trigger" href="#!" data-target="dropdown2"><i
+            class="material-icons right">account_circle</i></a></li>
+
+      <li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+    </ul>
+
+    <!-- mobile app -->
+    <ul id="nav-mobile" class="sidenav">
+      <li><a routerLink="home">Home</a></li>
+      <li><a routerLink="mobiles">Mobile</a></li>
+      <li><a routerLink="bikes">Bikes</a></li>
+      <li><a routerLink="books">Books</a></li>
+      <li><a routerLink="temp">Temp</a></li>
+      <li><a routerLink="react">React</a></li>
+      <li><a routerLink="login">login</a></li>
+      <li><a routerLink="dash">dashboard</a></li>
+      <li><a href="#"><i class="material-icons">shopping_cart</i></a></li>
+    </ul>
+    <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <!-- mobile app -->
+  </div>
+</nav>

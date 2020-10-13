@@ -1,0 +1,124 @@
+<!-- CHILDERN nAVIGATION BAR-->
+<nav class="transparent z-depth-0">
+
+  <div class="nav">
+    <ul class="right hide-on-med-and-down light">
+      <li><a routerLink="/mobiles">Mobiles</a></li>
+      <li><a routerLink="moto">motorola</a></li>
+      <li><a routerLink="sams">samsung</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<h3> We have {{ calcProd() }} Products in Stock..!</h3>
+<!-- <h1>{{ title }}</h1>
+<input type="text" [(ngModel)]='title' /> -->
+
+<router-outlet></router-outlet>
+<!-- /CHILDERN nAVIGATION BAR-->
+
+<ul>
+  <li *ngFor="let mobPart of mobParts">
+    <!--Card start here-->
+    <div class="col s12 m3">
+      <div class="card">
+        <!-- for card titile green and red -->
+        <ng-container *ngIf="mobPart.InStock != 0; then avl; else navl"></ng-container>
+        <ng-template #avl>
+          <span class="card-title col m7 green">Available</span>
+        </ng-template>
+        <ng-template #navl>
+          <span class="card-title col m7 red">Sold Out</span>
+        </ng-template>
+        <div class="card-image">
+          <img [src]="mobPart.prodImg"> <!-- property binding-->
+          <h6 appSimpleStyle defaultColor=''>{{  mobPart.name | uppercase}}</h6>
+          <a [routerLink]="[
+              '/prodView',
+              'Your Product  ' +
+                mobPart.id +
+                '  ' +
+                mobPart.name +
+                ' has succesfully added to the Cart']" class="btn-floating halfway-fab waves-effect waves-light red">
+            <i class="material-icons">shopping_cart</i>
+            <!-- <i class="material-icons">favorite</i> -->
+
+          </a>
+
+        </div>
+        <!-- card content -->
+        <div class="card-content">
+
+          <p>
+            Product Name :<b [style.color]="mobPart.pColor">{{
+              mobPart.name | uppercase
+            }}</b>
+          </p>
+
+          <ng-container *ngIf="mobPart.InStock != 0; then StockAvl; else OutfStock">
+          </ng-container>
+          <ng-template #StockAvl>
+            Last <mark> {{ mobPart.InStock }}</mark> Products are Available in
+            the Store.
+          </ng-template>
+
+          <ng-template #OutfStock>
+            Currently Out Of Stock
+          </ng-template>
+          <br />
+
+          <p>Product Id : {{ mobPart.id }}</p>
+          <span [ngSwitch]="mobPart.country">
+            Country:
+            <img *ngSwitchCase="'Australia'"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/b/b9/Flag_of_Australia.svg/23px-Flag_of_Australia.svg.png"
+              width="24" />
+
+            <img *ngSwitchCase="'Germany'"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/23px-Flag_of_Germany.svg.png"
+              width="24" />
+
+            <img *ngSwitchCase="'India'"
+              src="https://upload.wikimedia.org/wikipedia/en/thumb/4/41/Flag_of_India.svg/23px-Flag_of_India.svg.png"
+              width="24" />
+          </span>
+          <p>
+            <s> MRP : {{ mobPart.price  | currency : 'INR'}} </s>
+            Offer : {{ mobPart.offer | currency: "INR" }}
+          </p>
+          <!-- <p>The sqaure Root of 144 is : {{ 144 | limit }}</p> -->
+          <!-- <p>About Product : {{ mobPart.description | limit }}</p> -->
+          <br>
+          <br>
+
+
+
+          <span [ngStyle]="{
+              display: mobPart.isOnline === true ? 'block' : 'none'
+            }">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Green_sphere.svg/2000px-Green_sphere.svg.png"
+              width="16" />
+          </span>
+          <p>
+            <button class="waves-effect waves-light btn" (click)='downQuantity(mobPart)'>-</button>
+
+            <input [(ngModel)]="mobPart.quantity" class="input" />
+
+            {{ mobPart.quantity }}
+
+            <button class="waves-effect waves-light btn" (click)='upQuantity(mobPart)'>+</button>
+
+          </p>
+
+        </div>
+        <!-- card content -->
+      </div>
+    </div>
+
+    <!-- card ends here -->
+  </li>
+</ul>

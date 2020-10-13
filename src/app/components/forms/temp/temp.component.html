@@ -1,0 +1,32 @@
+<p>Forms</p>
+<div class="input-field">
+    <!-- username -->
+    <label> Name</label>
+    <input type="text" name="uName" #tempVar="ngModel" ngModel (keyup)="log(tempVar)" required minlength="4"
+        pattern="Angular" />
+    <div style="color:red;" *ngIf="tempVar.touched && !tempVar.valid">
+        Something Went Wrong..!
+        <div *ngIf="tempVar.errors.required">required</div>
+        <div *ngIf="tempVar.errors.minlength">Username should be minimum 6 characters</div>
+        <div *ngIf="tempVar.errors.pattern">username should be alphanumeric and case sensitive</div>
+    </div>
+</div>
+
+<!-- password -->
+<div class="input-field">
+    <label> Password</label>
+    <input type="password" name="passw" #tempVars="ngModel" ngModel (keyup)="log(tempVars)" required minlength="6"
+        pattern="Angulars" />
+    <div style="color:red;" *ngIf="tempVars.touched && !tempVars.valid">
+        please Enter your Password..!
+        <div *ngIf="tempVars.errors.required">required</div>
+        <div *ngIf="tempVars.errors.minlength">password should be minimum 6 characters</div>
+        <div *ngIf="tempVars.errors.pattern">password should be alphanumeric and case sensitive</div>
+    </div>
+</div>
+
+
+<!-- 
+    uName = nilesh
+    #tempVar -> took all the field <input type="text" name="uName" #tempVar="ngModel" ngModel (keyup)="log(tempVar)" />
+    ngModel -> validObj -->
